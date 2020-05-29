@@ -98,18 +98,18 @@
 //
 #define TCP_MSS                         (WHD_PAYLOAD_MTU)
 
-#define 	LWIP_CHECKSUM_CTRL_PER_NETIF   1
-#define 	CHECKSUM_GEN_IP   1
-#define 	CHECKSUM_GEN_UDP   1
-#define 	CHECKSUM_GEN_TCP   1
-#define 	CHECKSUM_GEN_ICMP   1
-#define 	CHECKSUM_GEN_ICMP6   1
-#define 	CHECKSUM_CHECK_IP   1
-#define 	CHECKSUM_CHECK_UDP   1
-#define 	CHECKSUM_CHECK_TCP   1
-#define 	CHECKSUM_CHECK_ICMP   1
-#define 	CHECKSUM_CHECK_ICMP6   1
-#define 	LWIP_CHECKSUM_ON_COPY   1
+#define     LWIP_CHECKSUM_CTRL_PER_NETIF   1
+#define     CHECKSUM_GEN_IP   1
+#define     CHECKSUM_GEN_UDP   1
+#define     CHECKSUM_GEN_TCP   1
+#define     CHECKSUM_GEN_ICMP   1
+#define     CHECKSUM_GEN_ICMP6   1
+#define     CHECKSUM_CHECK_IP   1
+#define     CHECKSUM_CHECK_UDP   1
+#define     CHECKSUM_CHECK_TCP   1
+#define     CHECKSUM_CHECK_ICMP   1
+#define     CHECKSUM_CHECK_ICMP6   1
+#define     LWIP_CHECKSUM_ON_COPY   1
 
 //
 // Enable the thread safe NETCONN interface layer
