@@ -2,7 +2,7 @@
 <Design version="12" device_library_hint_path="../../../mtb_shared/mtb-pdl-cat1/latest-v2.X/devicesupport.xml" xmlns="http://cypress.com/xsd/cydesignfile_v3">
     <ToolInfo version="2.2.0.2801"/>
     <Devices>
-        <Device mpn="CY8C624ABZI-S2D44">
+        <Device mpn="CY8C6247BZI-D54">
             <BlockConfig>
                 <Block location="cpuss[0].dap[0]">
                     <Personality template="mxs40dap" version="1.0">
@@ -111,9 +111,6 @@
                 <Block location="ioss[0].port[10].pin[6]">
                     <Alias value="CYBSP_J2_13"/>
                 </Block>
-                <Block location="ioss[0].port[10].pin[7]">
-                    <Alias value="CYBSP_J2_15"/>
-                </Block>
                 <Block location="ioss[0].port[11].pin[1]">
                     <Alias value="CYBSP_LED9"/>
                     <Alias value="CYBSP_USER_LED2"/>
@@ -151,27 +148,6 @@
                 <Block location="ioss[0].port[12].pin[3]">
                     <Alias value="CYBSP_SPI_CS"/>
                     <Alias value="CYBSP_D10"/>
-                </Block>
-                <Block location="ioss[0].port[12].pin[4]">
-                    <Alias value="CYBSP_SDHC_CMD"/>
-                </Block>
-                <Block location="ioss[0].port[12].pin[5]">
-                    <Alias value="CYBSP_SDHC_CLK"/>
-                </Block>
-                <Block location="ioss[0].port[13].pin[0]">
-                    <Alias value="CYBSP_SDHC_IO0"/>
-                </Block>
-                <Block location="ioss[0].port[13].pin[1]">
-                    <Alias value="CYBSP_SDHC_IO1"/>
-                </Block>
-                <Block location="ioss[0].port[13].pin[2]">
-                    <Alias value="CYBSP_SDHC_IO2"/>
-                </Block>
-                <Block location="ioss[0].port[13].pin[3]">
-                    <Alias value="CYBSP_SDHC_IO3"/>
-                </Block>
-                <Block location="ioss[0].port[13].pin[7]">
-                    <Alias value="CYBSP_SDHC_DETECT"/>
                 </Block>
                 <Block location="ioss[0].port[1].pin[0]">
                     <Alias value="CYBSP_CSD_RX"/>
@@ -263,11 +239,9 @@
                     <Alias value="CYBSP_D1"/>
                 </Block>
                 <Block location="ioss[0].port[5].pin[2]">
-                    <Alias value="CYBSP_DEBUG_UART_RTS"/>
                     <Alias value="CYBSP_D2"/>
                 </Block>
                 <Block location="ioss[0].port[5].pin[3]">
-                    <Alias value="CYBSP_DEBUG_UART_CTS"/>
                     <Alias value="CYBSP_D3"/>
                 </Block>
                 <Block location="ioss[0].port[5].pin[4]">
@@ -359,11 +333,11 @@
                     <Alias value="CYBSP_LED_RGB_BLUE"/>
                     <Alias value="CYBSP_USER_LED5"/>
                 </Block>
+                <Block location="ioss[0].port[7].pin[4]">
+                    <Alias value="CYBSP_D9"/>
+                </Block>
                 <Block location="ioss[0].port[7].pin[5]">
                     <Alias value="CYBSP_D8"/>
-                </Block>
-                <Block location="ioss[0].port[7].pin[6]">
-                    <Alias value="CYBSP_D9"/>
                 </Block>
                 <Block location="ioss[0].port[7].pin[7]">
                     <Alias value="CYBSP_CMOD"/>
@@ -490,13 +464,10 @@
                 <Block location="ioss[0].port[9].pin[6]">
                     <Alias value="CYBSP_J2_14"/>
                 </Block>
-                <Block location="ioss[0].port[9].pin[7]">
-                    <Alias value="CYBSP_J2_16"/>
-                </Block>
-                <Block location="peri[0].div_8[0]">
+                <Block location="peri[0].div_8[3]">
                     <Alias value="CYBSP_CSD_CLK_DIV"/>
                     <Personality template="mxs40peripheralclock" version="1.0">
-                        <Param id="intDivider" value="1"/>
+                        <Param id="intDivider" value="256"/>
                         <Param id="fracDivider" value="0"/>
                         <Param id="startOnReset" value="true"/>
                     </Personality>
@@ -511,7 +482,7 @@
                 </Block>
                 <Block location="srss[0].clock[0].bakclk[0]">
                     <Personality template="mxs40bakclk" version="1.0">
-                        <Param id="sourceClock" value="lfclk"/>
+                        <Param id="sourceClock" value="wco"/>
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].fastclk[0]">
@@ -526,12 +497,6 @@
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].hfclk[0]">
-                    <Personality template="mxs40hfclk" version="1.1">
-                        <Param id="sourceClockNumber" value="0"/>
-                        <Param id="divider" value="1"/>
-                    </Personality>
-                </Block>
-                <Block location="srss[0].clock[0].hfclk[4]">
                     <Personality template="mxs40hfclk" version="1.1">
                         <Param id="sourceClockNumber" value="0"/>
                         <Param id="divider" value="1"/>
@@ -577,11 +542,6 @@
                         <Param id="sourceClock" value="imo"/>
                     </Personality>
                 </Block>
-                <Block location="srss[0].clock[0].pathmux[5]">
-                    <Personality template="mxs40pathmux" version="1.0">
-                        <Param id="sourceClock" value="imo"/>
-                    </Personality>
-                </Block>
                 <Block location="srss[0].clock[0].periclk[0]">
                     <Personality template="mxs40periclk" version="1.0">
                         <Param id="divider" value="2"/>
@@ -612,7 +572,7 @@
                     <Personality template="mxs40power" version="1.3">
                         <Param id="pwrMode" value="LDO_1_1"/>
                         <Param id="actPwrMode" value="ULP"/>
-                        <Param id="coreRegulator" value="CY_SYSPM_BUCK_MODE_NORMAL"/>
+                        <Param id="coreRegulator" value="CY_SYSPM_BUCK_MODE_MIN"/>
                         <Param id="pmicEnable" value="false"/>
                         <Param id="backupSrc" value="VDDD"/>
                         <Param id="idlePwrMode" value="CY_CFG_PWR_MODE_DEEPSLEEP"/>
@@ -641,7 +601,7 @@
                 </Net>
                 <Net>
                     <Port name="csd[0].csd[0].clock[0]"/>
-                    <Port name="peri[0].div_8[0].clk[0]"/>
+                    <Port name="peri[0].div_8[3].clk[0]"/>
                 </Net>
                 <Net>
                     <Port name="ioss[0].port[0].pin[0].analog[0]"/>
@@ -691,7 +651,7 @@
                 </Mux>
             </Netlist>
         </Device>
-        <Device mpn="CYW43012C0WKWBG">
+        <Device mpn="CYW43438KUBG">
             <BlockConfig>
                 <Block location="wifi[0].power[0]">
                     <Personality template="connectivity_wifi" version="1.0">

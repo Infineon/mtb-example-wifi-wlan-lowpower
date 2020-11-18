@@ -54,13 +54,13 @@
 /* Wi-Fi Credentials: Modify WIFI_SSID and WIFI_PASSWORD to match your Wi-Fi network
  * Credentials.
  */
-#define WIFI_SSID                         "SSID"
-#define WIFI_PASSWORD                     "PASSWORD"
+#define WIFI_SSID                         "WIFI_SSID"
+#define WIFI_PASSWORD                     "WIFI_PASSWORD"
 
 /* Security type of the Wi-Fi access point. See 'cy_wcm_security_t' structure
  * in "cy_wcm.h" for more details.
  */
-#define WIFI_SECURITY                     CY_WCM_SECURITY_WPA2_MIXED_PSK
+#define WIFI_SECURITY                     CY_WCM_SECURITY_WPA2_AES_PSK
 
 #define LED_BLINK_DELAY_MS                (100u)
 
@@ -100,10 +100,10 @@
  * that the current consumption measurement for MCU is not affected by the LED
  * current. 
  */
-#if defined(TARGET_CY8CPROTO_062_4343W)
+#if defined(TARGET_CY8CPROTO_062_4343W) || defined(TARGET_CY8CKIT_062_WIFI_BT)
 #define USER_LED                          CYBSP_USER_LED
-#elif defined(TARGET_CY8CKIT_062S2_43012)
-#define USER_LED                          CYBSP_USER_LED2 
+#elif (defined(TARGET_CY8CKIT_062S2_43012) || defined(TARGET_CYW9P62S1_43438EVB_01) || defined(TARGET_CYW9P62S1_43012EVB_01))
+#define USER_LED                          CYBSP_USER_LED2
 #endif
 
 #define APP_INFO( x )           do { printf("Info: "); printf x;} while(0);

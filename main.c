@@ -1,8 +1,8 @@
 /*******************************************************************************
  * File Name:   main.c
  *
- * Description: This is the source code for WLAN Lowpower Example in
- * ModusToolbox.
+ * Description: Main file for WLAN Lowpower Example. This application
+ * demonstrates low power operation of the PSoC 6 MCU and the WLAN device.
  *
  * Related Document: See Readme.md
  *

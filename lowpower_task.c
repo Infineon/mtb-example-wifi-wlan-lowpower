@@ -130,7 +130,7 @@ void lowpower_task(void *arg)
     /* Obtain the pointer to the lwIP network interface. This pointer is used to
      * access the Wi-Fi driver interface to configure the WLAN power-save mode.
      */
-    wifi = cy_lwip_get_interface();
+    wifi = cy_lwip_get_interface(CY_LWIP_STA_NW_INTERFACE);
 
     /* Configure the WLAN device to a power-save mode configured by the macro
      * WLAN_POWERSAVE_MODE
