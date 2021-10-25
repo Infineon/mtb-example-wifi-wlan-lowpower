@@ -79,6 +79,12 @@
 TaskHandle_t lowpower_task_handle;
 
 
+/******************************************************************************
+* Function Prototypes
+*******************************************************************************/
+void print_heap_usage(char *msg);
+
+
 /*******************************************************************************
  * Function definitions
  ******************************************************************************/
@@ -156,6 +162,7 @@ void lowpower_task(void *arg)
         cyhal_gpio_toggle(USER_LED);
         vTaskDelay(pdMS_TO_TICKS(LED_BLINK_DELAY_MS));
         cyhal_gpio_toggle(USER_LED);
+        print_heap_usage("In the sleep-wakeup loop");
     }
 }
 

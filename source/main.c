@@ -63,8 +63,6 @@
 /*******************************************************************************
  * Global Variables
  ******************************************************************************/
-/* This enables RTOS aware debugging */
-volatile int uxTopUsedPriority;
 
 
 /*******************************************************************************
@@ -90,9 +88,6 @@ int main()
 {
     cy_rslt_t result;
 
-    /* This enables RTOS aware debugging in OpenOCD. */
-    uxTopUsedPriority = configMAX_PRIORITIES - 1;
-
     /* Initialize the board support package. */
     result = cybsp_init();
     CHECK_RESULT(result);
@@ -111,7 +106,7 @@ int main()
     /* \x1b[2J\x1b[;H - ANSI ESC sequence to clear screen. */
     printf("\x1b[2J\x1b[;H");
     printf("===============================================================\n");
-    printf("CE230106 - AnyCloud Example: WLAN Lowpower\n");
+    printf("CE230106 - WLAN Lowpower\n");
     printf("===============================================================\n\n");
 
     /* Create a task that initializes the Wi-Fi device, configures it
