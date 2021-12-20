@@ -131,11 +131,18 @@ LDLIBS=
 LINKER_SCRIPT=
 
 # Custom pre-build commands to run.
-PREBUILD=
+ifeq ($(TARGET), CY8CPROTO-062S3-4343W)
+PREBUILD=\
+    $(CY_QSPI_CONFIGURATOR_DIR)/qspi-configurator-cli --config $(wildcard ./COMPONENT_CUSTOM_DESIGN_MODUS/TARGET_$(TARGET)/*.cyqspi);
+endif
 
 # Custom post-build commands to run.
 POSTBUILD=
 
+ifeq ($(TARGET), CY8CPROTO-062S3-4343W)
+DEFINES+=CY_ENABLE_XIP_PROGRAM
+DEFINES+=CY_STORAGE_WIFI_DATA=\".cy_xip\"
+endif
 
 ################################################################################
 # Paths
