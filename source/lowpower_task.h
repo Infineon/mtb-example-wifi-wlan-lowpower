@@ -8,7 +8,7 @@
 * Related Document: See README.md
 *
 ********************************************************************************
-* Copyright 2020-2021, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2020-2022, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -96,15 +96,10 @@
 /* Delay between successive Wi-Fi connection attempts, in milliseconds. */
 #define WIFI_CONN_RETRY_INTERVAL_MSEC     (100u)
 
-/* Select an LED that is not connected to P6_VDD (MCU supply) on the board so
- * that the current consumption measurement for MCU is not affected by the LED
- * current. 
+/* NOTE: USER_LED is defined in template BSPs, and select an LED that is not
+ * connected to P6_VDD (MCU supply) on the board so that the current consumption
+ * measurement for MCU is not affected by the LED current. 
  */
-#if defined(TARGET_CY8CPROTO_062_4343W) || defined(TARGET_CY8CKIT_062_WIFI_BT) || defined(TARGET_CYSBSYSKIT_DEV_01) || defined(TARGET_CY8CPROTO_062S3_4343W)
-#define USER_LED                          CYBSP_USER_LED
-#elif (defined(TARGET_CY8CKIT_062S2_43012) || defined(TARGET_CYW9P62S1_43438EVB_01) || defined(TARGET_CYW9P62S1_43012EVB_01) || defined(TARGET_CY8CKIT_064B0S2_4343W) || defined(TARGET_CY8CEVAL_062S2_LAI_4373M2)|| defined(TARGET_CY8CEVAL_062S2_MUR_43439M2))
-#define USER_LED                          CYBSP_USER_LED2
-#endif
 
 #define APP_INFO( x )           do { printf("Info: "); printf x;} while(0);
 #define ERR_INFO( x )           do { printf("Error: "); printf x;} while(0);

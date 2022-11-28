@@ -4,10 +4,10 @@
  * Description: Main file for WLAN Lowpower Example. This application
  * demonstrates low power operation of the PSoC 6 MCU and the WLAN device.
  *
- * Related Document: See Readme.md
+ * Related Document: See Readme.md 
  *
 ********************************************************************************
-* Copyright 2020-2021, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2020-2022, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -52,7 +52,7 @@
 /*Task header file.*/
 #include "lowpower_task.h"
 
-#if defined(TARGET_CY8CPROTO_062S3_4343W)
+#if defined(CY_ENABLE_XIP_PROGRAM)
 #include "cy_serial_flash_qspi.h"
 #include "cycfg_qspi_memslot.h"
 #endif
@@ -108,7 +108,7 @@ int main()
     CHECK_RESULT(result);
 
     /* Init QSPI and enable XIP to get the Wi-Fi firmware from the QSPI NOR flash */
-    #if defined(TARGET_CY8CPROTO_062S3_4343W)
+    #if defined(CY_ENABLE_XIP_PROGRAM)
         const uint32_t bus_frequency = 50000000lu;
         cy_serial_flash_qspi_init(smifMemConfigs[0], CYBSP_QSPI_D0, CYBSP_QSPI_D1,
                                       CYBSP_QSPI_D2, CYBSP_QSPI_D3, NC, NC, NC, NC,
