@@ -8,7 +8,7 @@
 * Related Document: See README.md
 *
 ********************************************************************************
-* Copyright 2020-2022, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2020-2023, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -48,8 +48,6 @@
 
 #include "cy_wcm.h"
 #include "cybsp.h"
-#include "cy_lwip.h"
-
 
 /* Wi-Fi Credentials: Modify WIFI_SSID and WIFI_PASSWORD to match your Wi-Fi network
  * Credentials.
@@ -136,7 +134,6 @@ extern TaskHandle_t lowpower_task_handle;
  ******************************************************************************/
 void lowpower_task(void *arg);
 cy_rslt_t wifi_connect(void);
-cy_rslt_t wlan_powersave_handler(struct netif *wifi, enum wlan_powersave_mode_t mode);
 
 
 #endif /* LOWPOWER_TASK_H_ */

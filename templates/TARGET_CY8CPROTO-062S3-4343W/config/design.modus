@@ -430,7 +430,7 @@
                     <Personality template="power" version="1.3">
                         <Param id="pwrMode" value="LDO_1_1"/>
                         <Param id="actPwrMode" value="ULP"/>
-                        <Param id="coreRegulator" value="CY_SYSPM_LDO_MODE_NORMAL"/>
+                        <Param id="coreRegulator" value="CY_SYSPM_BUCK_MODE_NORMAL"/>
                         <Param id="pmicEnable" value="false"/>
                         <Param id="backupSrc" value="VDDD"/>
                         <Param id="idlePwrMode" value="CY_CFG_PWR_MODE_DEEPSLEEP"/>
