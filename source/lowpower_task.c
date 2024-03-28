@@ -9,7 +9,7 @@
  * Related Document: See Readme.md
  *
 ********************************************************************************
-* Copyright 2020-2023, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2020-2024, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -82,7 +82,6 @@ TaskHandle_t lowpower_task_handle;
 * Function Prototypes
 *******************************************************************************/
 void print_heap_usage(char *msg);
-cy_rslt_t wlan_powersave_handler(struct netif *wifi, enum wlan_powersave_mode_t mode);
 extern cy_rslt_t cy_wcm_get_whd_interface(cy_wcm_interface_t interface_type, whd_interface_t *whd_iface);
 
 
@@ -140,12 +139,6 @@ void lowpower_task(void *arg)
      * access the Wi-Fi driver interface to configure the WLAN power-save mode.
      */
     wifi = (struct netif*)cy_network_get_nw_interface(CY_NETWORK_WIFI_STA_INTERFACE, 0U);
-    
-
-    /* Configure the WLAN device to a power-save mode configured by the macro
-     * WLAN_POWERSAVE_MODE
-     */
-    result = wlan_powersave_handler(wifi, WLAN_POWERSAVE_MODE);
 
     if(CY_RSLT_SUCCESS != result)
     {
@@ -227,103 +220,5 @@ cy_rslt_t wifi_connect(void)
 
     return result;
 }
-
-
-/*******************************************************************************
-* Function Name: wlan_powersave_handler
-********************************************************************************
-*
-* Summary: This function configures the power-save mode of the WLAN device.
-* There are three power-save modes supported as defined in the enumeration,
-* wlan_powersave_mode_t.
-*
-* Parameters:
-* struct netif *wifi: This is the pointer to lwIP's network interface. It 
-* contains pointers to the Wi-Fi driver and other network parameters.
-* wlan_powersave_mode_t mode: This enumeration contains information about the
-* power-save mode which is to be configured for the Wi-Fi interface.
-*
-* Return:
-* cy_rslt_t: It contains the status of operation of configuring the WLAN
-* interface's power-save mode.
-*
-*******************************************************************************/
-cy_rslt_t wlan_powersave_handler(struct netif *wifi, enum wlan_powersave_mode_t mode)
-{
-    cy_rslt_t result = CY_RSLT_SUCCESS;
-    whd_interface_t ifp;
-    whd_security_t security_param;
-    whd_bss_info_t ap_info;
-
-    if (wifi->flags & NETIF_FLAG_UP)
-    {
-        /* Get the instance of the WLAN interface.*/
-        ifp = (whd_interface_t)wifi->state;
-
-        result = cy_wcm_get_whd_interface(CY_WCM_INTERFACE_TYPE_STA, &ifp);
-
-        if (CY_RSLT_SUCCESS != result)
-        {
-            ERR_INFO(("Failed to whd interface.\n"));
-            return result;
-        }  
-
-        /* Obtain network parameters configured in the AP.*/
-        result = whd_wifi_get_ap_info(ifp, &ap_info, &security_param);
-
-        if (CY_RSLT_SUCCESS == result)
-        {
-            APP_INFO(("Beacon period = %d, DTIM period = %d\n",
-                      ap_info.beacon_period, ap_info.dtim_period));
-        }
-        else
-        {
-            ERR_INFO(("Failed to get AP info.\n"));
-        }
-
-        /* Configure power-save mode of the WLAN device.*/
-        switch (mode)
-        {
-        case POWERSAVE_WITHOUT_THROUGHPUT:
-            result = whd_wifi_enable_powersave(ifp);
-
-            if (CY_RSLT_SUCCESS != result)
-            {
-                ERR_INFO(("Failed to enable PM1 mode\n"));
-            }
-
-            break;
-        case POWERSAVE_WITH_THROUGHPUT:
-            result = whd_wifi_enable_powersave_with_throughput(ifp, RETURN_TO_SLEEP_MS);
-
-            if (CY_RSLT_SUCCESS != result)
-            {
-                ERR_INFO(("Failed to enable PM2 mode\n"));
-            }
-
-            break;
-        case POWERSAVE_DISABLED:
-            result = whd_wifi_disable_powersave(ifp);
-
-            if (CY_RSLT_SUCCESS != result)
-            {
-                ERR_INFO(("Failed to disable powersave\n"));
-            }
-
-            break;
-        default:
-            APP_INFO(("Unknown mode\n"));
-            break;
-        }
-    }
-    else
-    {
-        ERR_INFO(("Wi-Fi interface is not powered on. Failed to configure power-save mode\n"));
-        result = CY_RSLT_TYPE_ERROR;
-    }
-
-    return result;
-}
-
 
 /* [] END OF FILE */

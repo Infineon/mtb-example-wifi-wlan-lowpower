@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration app="BACKEND" formatVersion="13" lastSavedWith="Configurator Backend" lastSavedWithVersion="3.0.0" toolsPackage="ModusToolbox 3.0.0" xmlns="http://cypress.com/xsd/cydesignfile_v4">
+<Configuration app="BACKEND" formatVersion="13" lastSavedWith="Configurator Backend" lastSavedWithVersion="3.10.0" toolsPackage="ModusToolbox 3.1.0" xmlns="http://cypress.com/xsd/cydesignfile_v4">
     <Devices>
         <Device mpn="CY8C624ABZI-S2D44">
             <BlockConfig>
@@ -195,7 +195,6 @@
                 </Block>
                 <Block location="ioss[0].port[13].pin[6]">
                     <Alias value="CYBSP_USER_LED2"/>
-                    <Alias value="USER_LED"/>
                 </Block>
                 <Block location="ioss[0].port[13].pin[7]">
                     <Alias value="CYBSP_SDHC_DETECT"/>
@@ -277,18 +276,6 @@
                 </Block>
                 <Block location="ioss[0].port[4].pin[1]">
                     <Alias value="CYBSP_WIFI_HOST_WAKE"/>
-                    <Personality template="pin" version="3.0">
-                        <Param id="DriveModes" value="CY_GPIO_DM_PULLUP"/>
-                        <Param id="initialState" value="1"/>
-                        <Param id="nonSec" value="1"/>
-                        <Param id="vtrip" value="CY_GPIO_VTRIP_CMOS"/>
-                        <Param id="isrTrigger" value="CY_GPIO_INTR_FALLING"/>
-                        <Param id="slewRate" value="CY_GPIO_SLEW_FAST"/>
-                        <Param id="driveStrength" value="CY_GPIO_DRIVE_1_2"/>
-                        <Param id="sioOutputBuffer" value="true"/>
-                        <Param id="pullUpRes" value="CY_GPIO_PULLUP_RES_DISABLE"/>
-                        <Param id="inFlash" value="true"/>
-                    </Personality>
                 </Block>
                 <Block location="ioss[0].port[5].pin[0]">
                     <Alias value="CYBSP_D0"/>
@@ -588,6 +575,7 @@
                     <Alias value="CYBSP_J2_16"/>
                     <Alias value="CYBSP_LED_RGB_GREEN"/>
                     <Alias value="CYBSP_USER_LED4"/>
+                    <Alias value="USER_LED"/>
                 </Block>
                 <Block location="peri[0].div_16[15]">
                     <Personality template="pclk" version="3.0">
@@ -638,6 +626,7 @@
                     <Personality template="fll" version="4.0">
                         <Param id="configuration" value="auto"/>
                         <Param id="desiredFrequency" value="50.000"/>
+                        <Param id="enableOutputDivider" value="false"/>
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].hfclk[0]">
@@ -696,6 +685,14 @@
                         <Param id="divider" value="2"/>
                     </Personality>
                 </Block>
+                <Block location="srss[0].clock[0].pll[0]">
+                    <Personality template="pll" version="3.0">
+                        <Param id="lowFrequencyMode" value="false"/>
+                        <Param id="configuration" value="auto"/>
+                        <Param id="desiredFrequency" value="48.000"/>
+                        <Param id="optimization" value="MinPower"/>
+                    </Personality>
+                </Block>
                 <Block location="srss[0].clock[0].slowclk[0]">
                     <Personality template="slowclk" version="2.0">
                         <Param id="divider" value="1"/>
@@ -721,7 +718,7 @@
                     <Personality template="power" version="1.3">
                         <Param id="pwrMode" value="LDO_1_1"/>
                         <Param id="actPwrMode" value="ULP"/>
-                        <Param id="coreRegulator" value="CY_SYSPM_BUCK_MODE_NORMAL"/>
+                        <Param id="coreRegulator" value="CY_SYSPM_LDO_MODE_NORMAL"/>
                         <Param id="pmicEnable" value="false"/>
                         <Param id="backupSrc" value="VDDD"/>
                         <Param id="idlePwrMode" value="CY_CFG_PWR_MODE_DEEPSLEEP"/>
@@ -805,7 +802,16 @@
             </Netlist>
         </Device>
         <Device mpn="Sterling-LWB+/CYW43439KUBG">
-            <BlockConfig/>
+            <BlockConfig>
+                <Block location="bt[0].power[0]">
+                    <Personality template="connectivity_bt" version="1.0">
+                        <Param id="hostWakePin" value=""/>
+                        <Param id="hostWakeIrqEvent" value="CYCFG_BT_WAKE_EVENT_ACTIVE_LOW"/>
+                        <Param id="devWakePin" value=""/>
+                        <Param id="devWakePolarity" value="CYCFG_BT_WAKE_EVENT_ACTIVE_LOW"/>
+                    </Personality>
+                </Block>
+            </BlockConfig>
             <Netlist/>
         </Device>
     </Devices>

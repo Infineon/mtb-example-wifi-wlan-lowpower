@@ -8,7 +8,7 @@
 * Related Document: See README.md
 *
 ********************************************************************************
-* Copyright 2020-2023, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2020-2024, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -77,20 +77,6 @@
  */
 #define INACTIVE_WINDOW_MS                200u
 
-/* This macro defines the power-save mode that the WLAN device has to be
- * configured to. The valid values for this macro are POWERSAVE_WITH_THROUGHPUT,
- * POWERSAVE_WITHOUT_THROUGHPUT, POWERSAVE_DISABLED
- * which are defined in the enumeration wlan_powersave_mode_t.
- */
-#define WLAN_POWERSAVE_MODE               POWERSAVE_WITH_THROUGHPUT
-
-/* This macro specifies the duration in milliseconds for which the STA stays
- * awake after receiving frames from AP in PM2 mode. The delay value must be set
- * to a multiple of 10 and not equal to zero. Minimum value is 10u. Maximum
- * value is 2000u.
- */
-#define RETURN_TO_SLEEP_MS                (10u)
-
 /* Delay between successive Wi-Fi connection attempts, in milliseconds. */
 #define WIFI_CONN_RETRY_INTERVAL_MSEC     (100u)
 
@@ -102,26 +88,6 @@
 #define APP_INFO( x )           do { printf("Info: "); printf x;} while(0);
 #define ERR_INFO( x )           do { printf("Error: "); printf x;} while(0);
 #define CHECK_RESULT( x )       do { if(CY_RSLT_SUCCESS != x) { CY_ASSERT(0); } } while(0);
-
-/* This data type enlists enumerations that correspond to the different 
- * power-save modes available. They are,
- * POWERSAVE_WITHOUT_THROUGHPUT:This mode corresponds to (legacy) 802.11 PS-Poll
- * mode and should be used to achieve the lowest power consumption possible when
- * the Wi-Fi device is primarily passively listening to the network.
- *
- * POWERSAVE_WITH_THROUGHPUT:This mode attempts to increase throughput by
- * waiting for a timeout period before returning to sleep rather than returning
- * to sleep immediately.
- *
- * POWERSAVE_DISABLED: Powersave mode is disabled.
- */
-enum wlan_powersave_mode_t
-{
-   POWERSAVE_WITHOUT_THROUGHPUT,
-   POWERSAVE_WITH_THROUGHPUT,
-   POWERSAVE_DISABLED
-};
-
 
 /*******************************************************************************
  * Global Variables
