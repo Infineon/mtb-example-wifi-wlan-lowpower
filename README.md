@@ -6,7 +6,7 @@ The code example connects to a configured network. After connecting to the netwo
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-wifi-wlan-lowpower)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzAxMDYiLCJTcGVjIE51bWJlciI6IjAwMi0zMDEwNiIsIkRvYyBUaXRsZSI6IldMQU4gbG93IHBvd2VyIiwicmlkIjoic2RhayIsIkRvYyB2ZXJzaW9uIjoiNC40LjAiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IlBTT0MifQ==)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzAxMDYiLCJTcGVjIE51bWJlciI6IjAwMi0zMDEwNiIsIkRvYyBUaXRsZSI6IldMQU4gbG93IHBvd2VyIiwicmlkIjoiYW5hbmRoYWt1bWFyIiwiRG9jIHZlcnNpb24iOiI0LjUuMCIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJJQ1ciLCJEb2MgRmFtaWx5IjoiV0lGSSJ9)
 
 
 ## Requirements
@@ -33,7 +33,7 @@ The code example connects to a configured network. After connecting to the netwo
 - [PSoC&trade; 62S2 Wi-Fi Bluetooth&reg; Pioneer kit](https://www.infineon.com/CY8CKIT-062S2-43012) (`CY8CKIT-062S2-43012`)
 - [PSoC&trade; 62S3 Wi-Fi Bluetooth&reg; Prototyping Kit](https://www.infineon.com/CY8CPROTO-062S3-4343W) (`CY8CPROTO-062S3-4343W`)
 - [PSoC&trade; 64 "Secure Boot" Wi-Fi Bluetooth&reg; Pioneer Kit](https://www.infineon.com/CY8CKIT-064B0S2-4343W) (`CY8CKIT-064B0S2-4343W`)
-- [PSoC&trade; 62S2 Evaluation Kit](https://www.infineon.com/CY8CEVAL-062S2) (`CY8CEVAL-062S2-LAI-4373M2`, `CY8CEVAL-062S2-LAI-43439M2`, `CY8CEVAL-062S2-MUR-43439M2`,`CY8CEVAL-062S2-CYW43022CUB`)
+- [PSoC&trade; 62S2 Evaluation Kit](https://www.infineon.com/CY8CEVAL-062S2) (`CY8CEVAL-062S2-LAI-4373M2`, `CY8CEVAL-062S2-LAI-43439M2`, `CY8CEVAL-062S2-MUR-43439M2`,`CY8CEVAL-062S2-CYW43022CUB`,`CY8CEVAL-062S2-CYW955513SDM2WLIPA')
 - [PSoC&trade; 6 AI Evaluation Kit](https://www.infineon.com/CY8CKIT-062S2-AI) (`CY8CKIT-062S2-AI`)
 
 
@@ -275,6 +275,8 @@ Do the following to create a custom configuration for a new kit:
 3. Open the copied *design.modus* file using the Device Configurator.
 
 4. On the PSoC&trade; 6 MCU **Pins** tab of the Device Configurator, do the following:
+
+> **Note:** For CY8CEVAL-062S2-CYW955513SDM2WLIPA, Drive Mode should be set to Resistive Pull UP, Input Buffer ON.
 
    **CY8CKIT-062S2-43012:**
 
@@ -568,6 +570,7 @@ Document title: *CE230106* – *WLAN low power*
  4.2.0   | Added support for CY8CPROTO-062S2-43439 
  4.3.0   | Added support for CY8CEVAL-062S2-CYW43022CUB and updated to use low power assistant (LPA) middleware v5.x
  4.4.0   | Added support for CY8CKIT-062S2-AI
+ 4.5.0   | Added support for CY8CEVAL-062S2-CYW955513SDM2WLIPA
 
 <br>
 
